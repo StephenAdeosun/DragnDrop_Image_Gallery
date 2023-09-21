@@ -79,22 +79,24 @@ function LoginForm() {
             />
           </Box>
   
-          <Box flex="1" p="4">
+          <Box flex="1" p="4" bgColor={'black'}>
             
-              <Heading size="lg" color='orange' textAlign={'center'} mb={'8'}>Login</Heading>
-              <form onSubmit={handleLogin}>
-                <VStack spacing="6" >
-              <FormControl isInvalid={!!error}>
+              <Heading size="lg" color='orange' bgColor={'black'} textAlign={'center'} mb={'8'}>Login</Heading>
+              <form onSubmit={handleLogin} bgColor={'black'}>
+                <VStack spacing="6" bgColor={'black'} > 
+              <FormControl isInvalid={!!error} bgColor={'black'}>
               <Input placeholder="Username" color='white' focusBorderColor="grey" borderColor='grey'
               value={email}
+              bgColor={'black'}
               onChange={(e) => setEmail(e.target.value)}
               
               />
             </FormControl>
-             <FormControl isInvalid={!!error}>  
+             <FormControl isInvalid={!!error} bgColor={'black'}>  
               <Input  type="password" color='white' focusBorderColor="grey" borderColor='grey'
                 placeholder="Enter your password"
                 value={password}
+                bgColor={'black'}
                 onChange={(e) => setPassword(e.target.value)}
               />
            
