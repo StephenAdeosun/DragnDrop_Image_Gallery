@@ -48,7 +48,7 @@ function LoginForm() {
   };
 
   return (
-    <Box bgColor={'white'} h='200vh'>
+    <Box bgColor={'white'}>
       {isLoggedIn ? (
         <Gallery/>
       ) : (
