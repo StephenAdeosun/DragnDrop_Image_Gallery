@@ -1,8 +1,10 @@
 // src/components/LoginForm.js
 import { useState } from "react";
 import { auth, signInWithEmailAndPassword } from "../firebase";
-import { Box, Button, FormControl, FormLabel, Input, Text } from "@chakra-ui/react";
-import Gallery from '../box'
+import { Box, Button,   Heading,
+  VStack,Image,
+  Center,FormControl, FormLabel, Input, Text } from "@chakra-ui/react";
+import Gallery from './img'
 function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -46,39 +48,77 @@ function LoginForm() {
   };
 
   return (
-    <Box bgColor={'white'} h='100vh'>
+    <Box bgColor={'white'} h='200vh'>
       {isLoggedIn ? (
         <Gallery/>
       ) : (
-    <Box maxWidth="400px"  color={'black'} margin="0 auto">
-
-      <form onSubmit={handleLogin}>
-        <FormControl  isInvalid={!!error}>
-          <FormLabel>Email</FormLabel>
-          <Input
-            // type="email"
-            placeholder="Enter your email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </FormControl>
-        <FormControl mt={4}  isInvalid={!!error}>
-          <FormLabel>Password</FormLabel>
-          <Input
-            type="password"
-            placeholder="Enter your password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </FormControl>
-        <Button mt={4} colorScheme="teal" type="submit" isLoading={isLoading}>
+        <Center height="100vh" backgroundColor='black'>
+        <Box
+          borderWidth="1px"
+          
+          p="0" 
+          width="90%"
+          maxWidth={{ md: '70%' }} 
+          height="80vh" 
+          boxShadow="0 4px 24px rgb(257, 87, 0, 0.4);" 
+          display="flex"
+          border="0px solid #e2e8f0"	
+          flexDirection={{ base: 'column', xl: 'row' }}
+          justifyContent="center" 
+        >
+  
+          <Box
+            display={{ base: 'none', xl: 'block' }}
+            width="50%" // Set the image container width to 50%
+           
+          >
+            <Image
+              src="https://scissors2.vercel.app/assets/register%20svg.jpg" // Replace with your image URL
+              alt="Signup"
+              style={{ width: '100%', height: '100%', objectFit: 'cover' }} // Use object-fit: cover
+            />
+          </Box>
+  
+          <Box flex="1" p="4">
+            
+              <Heading size="lg" color='orange' textAlign={'center'} mb={'8'}>Login</Heading>
+              <form onSubmit={handleLogin}>
+                <VStack spacing="6" >
+              <FormControl isInvalid={!!error}>
+              <Input placeholder="Username" color='white' focusBorderColor="grey" borderColor='grey'
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              
+              />
+            </FormControl>
+             <FormControl isInvalid={!!error}>  
+              <Input  type="password" color='white' focusBorderColor="grey" borderColor='grey'
+                placeholder="Enter your password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+           
+          </FormControl> 
+          <Button mt={4} w='100%' colorScheme="orange" type="submit" isLoading={isLoading}>
           Log In
         </Button>
         <Text color="red.500">{error}</Text>
 
-      </form>
-    </Box> )}</Box>
-  );
+           </VStack>
+
+          </form>
+          
+          </Box>
+        </Box>
+      </Center>
+      )}
+      </Box>
+
+     
+  )
 }
 
 export default LoginForm;
+
+
+
